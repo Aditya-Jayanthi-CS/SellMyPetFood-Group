@@ -13,17 +13,25 @@ public class TargetedAd {
     
     while (!post.equals("NONE")) 
     {
-      String targetWord = collector.getNextTargetWord();
+      int firstSpace = post.indexOf(" ");
+      String username = post.substring(0, firstSpace);
+      String lowerPost = post.toLowerCase();
+      
       boolean found = false;
+      String targetWord = collector.getNextTargetWord();
 
       while (!targetWord.equals("NONE")) 
       {
-        if (post.toLowerCase().indexOf(targetWord.toLowerCase()) != -1 && !found) 
+        String lowerTarget = targetWord.toLowerCase();
+
+        if (lowerPost.indexOf(lowerTarget) >= 0) 
         {
-          String username = post.split(" ")[0];
-          targetedUsers += username + " ";
-          found = true; 
+          if (found == false) {
+            targetedUsers += username + " ";
+            found = true; 
+          }
         }
+        
         targetWord = collector.getNextTargetWord();
       }
       
@@ -31,13 +39,12 @@ public class TargetedAd {
     }
 
     String adContent = "whatssup!!! check out our new premium monkey treats! hint: there are special discount inside. SHHH take it while you can!";
-    collector.prepareAdvertisement("prepareAdvertisement.txt", targetedUsers, adContent);
+    collector.prepareAdvertisement("targetAd.txt", targetedUsers, adContent);
 
     //just for us to know that we actually created it
-    System.out.println("targeted advertisement file created");
+    System.out.println("targeted advertisement file is created");
   }
 }
-
     /*  
      * TODO:
      * PREPARATION WORK
