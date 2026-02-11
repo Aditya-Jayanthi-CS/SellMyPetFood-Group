@@ -41,8 +41,13 @@ public class TargetedAd {
     String adContent = "whatssup!!! check out our new premium monkey treats! hint: there are special discount inside. SHHH take it while you can!";
     collector.prepareAdvertisement("targetAd.txt", targetedUsers, adContent);
 
-    //just for us to know that we actually created it
+    //just for us to know that we actually created the file, we display it in the terminal
     System.out.println("targeted advertisement file is created");
+    System.out.println("------------------------------");
+    System.out.println("targeted users: " + targetedUsers);
+    System.out.println("------------------------------");
+    System.out.println("advertisement content: " + adContent);
+    System.out.println("------------------------------");
   }
 }
     /*  
