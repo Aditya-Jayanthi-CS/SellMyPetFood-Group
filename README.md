@@ -6,5 +6,5 @@
 
 | Task Description | Person | Estimated Time to Develop | Actual Time to Develop | 
 |---|---|---|---|
-| Create targetWords.txt with keywords. Initialize the DataCollector and verify file paths. | Aditya | ~1 entire period | 1 entire period |
-| Write the main while loop to iterate through the social media posts and output the targeted users in prepareAdvertisement.txt | Hrihaan | ~1 period | 1 period |
+| Create targetWords.txt with keywords. Initialize the DataCollector and verify file paths. | Hrihaan | ~1 entire period | 1 entire period |
+| Write the main while loop to iterate through the social media posts and output the targeted users in prepareAdvertisement.txt | Aditya | ~1 period | 1 period |
