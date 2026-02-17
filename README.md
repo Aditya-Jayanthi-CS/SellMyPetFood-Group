@@ -4,7 +4,9 @@
 
 # MileStone Chart
 
-| Task Description | Person | Estimated Time to Develop | Actual Time to Develop | 
-|---|---|---|---|
-| Create targetWords.txt with keywords. Initialize the DataCollector and verify file paths. | Hrihaan | ~1 entire period | 1 entire period |
-| Write the main while loop to iterate through the social media posts and output the targeted users in prepareAdvertisement.txt | Aditya | ~1 period | 1 period |
+| Task Description | Person | Estimated Time to Develop | Actual Time to Develop | Date of Project |
+|---|---|---|---|---|
+| Build and Develop flowchart for action plan and brainstorm ideas for project implementation | Hrihaan | ~1 entire period | 1 entire period | Feb 11th |
+| Build and Develop flowchart for action plan and brainstorm ideas for project implementation | Aditya | ~1 period | 1 period | Feb 11th |
+| Create targetWords.txt with keywords. Initialize the DataCollector and verify file paths. | Hrihaan | ~1 entire period | 1 entire period | Feb 17th |
+| Write the main while loop to iterate through the social media posts and output the targeted users in prepareAdvertisement.txt | Aditya | ~1 period | 1 period | Feb 17th |
