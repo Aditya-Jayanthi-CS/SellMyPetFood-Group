@@ -1,20 +1,14 @@
 /*
- * Problem 2.3.1 Sell My Pet Food
- * 
- * V1.0
- * 6/1/2019
- * Copyright(c) 2019 PLTW to present. All rights reserved
+ * problem 2.3.1 sell my pet food
  */
 import java.util.Scanner;
 import java.io.File;
 import java.util.ArrayList;
 import java.io.*;
 
-/**
- * A DataCollector class to manage social media posts
- */
 public class DataCollector
 {
+  // setting up our lists to hold the posts and the keywords
   private ArrayList<String> socialMediaPosts;
   private ArrayList<String> targetWords;
   private Scanner sc;
@@ -23,6 +17,7 @@ public class DataCollector
 
   public DataCollector()
   {
+    // initializing everything so we don't get null pointer errors
     socialMediaPosts = new ArrayList<String>();
     targetWords = new ArrayList<String>();
     currentPost = 0;
@@ -30,45 +25,41 @@ public class DataCollector
   }
 
   /**
-   * Gather the data contained in the files socialMediaPostsFilename and
-   * targetWordsFilename (including punctuation), with words separated by a single
-   * space
-   * 
-   * @param socialMediaPostsFilename the name of the file containing social media posts
-   * @param targetWordsFilename the name of the file containing the target words
+   * this method grabs the data from the .txt files and shoves them into our arraylists.
+   * we use a try/catch block here because java gets nervous about files not existing.
    */
   public void setData(String socialMediaPostsFilename, String targetWordsFilename) {
-    // read in the social media posts found in socialMediaPosts
-    // a try is like an if statement, "throwing" an error if the body of the try fails
     try
     {
+      // reading the social media posts first
       sc = new Scanner(new File(socialMediaPostsFilename));
       while (sc.hasNextLine())
       {
-        // String method trim removes whitespace before and after a string
-        String temp = sc.nextLine().trim();
-        // DEBUG: System.out.println(temp);
-        this.socialMediaPosts.add(temp);
+        // .trim() is nice because it gets rid of any annoying accidental spaces
+        String line = sc.nextLine().trim();
+        if (line.length() > 0)
+          socialMediaPosts.add(line);
       }
-    } catch (Exception e) { System.out.println("Error reading or parsing" + socialMediaPosts + "\n" + e); }
-
-    // read in the target words in targetWords
-    try
-    {
+      
+      // now reading the keywords we want to hunt for
       sc = new Scanner(new File(targetWordsFilename));
       while (sc.hasNextLine())
       {
-        // String method trim removes whitespace before and after a string
-        this.targetWords.add(sc.nextLine().trim());
+        String word = sc.nextLine().trim();
+        if (word.length() > 0)
+          targetWords.add(word);
       }
-    } catch (Exception e) { System.out.println("Error reading or parsing" + targetWords + "\n" + e); }
+    }
+    catch (Exception e)
+    {
+      // if the files are missing, this tells us what went wrong
+      System.out.println("something went wrong with the files: " + e);
+    }
   }
 
   /**
-   * Get the next post in socialMediaPosts with words separated by a single space, 
-   * or "NONE" if there is no more data.
-   * 
-   * @return a string containing one of the lines in socialMediaPosts
+   * this pulls the next post from the list. 
+   * we return "none" if we've reached the end so our while loop knows when to quit.
    */
   public String getNextPost()
   {
@@ -84,10 +75,8 @@ public class DataCollector
   }
 
   /**
-   * Get the next line in targetWords, with words separated by a space,
-   * or "NONE" if there is no more data.
-   * 
-   * @return a string containing one of the lines in targetWords
+   * same thing as getnextpost, but for the keywords.
+   * once it hits the end, it resets to 0 so we can check the next post against the same words.
    */
   public String getNextTargetWord()
   {
@@ -104,33 +93,35 @@ public class DataCollector
   }
 
   /**
-   * Create a File named filename and stores all the usernames to target
-   * 
-   * @param filename The name to save the file, must include .txt
-   * @param usernames A string containing the usernames of people to target,
-   * usernames are separated by a space.
+   * logic 2: file generation algorithm
+   * this is the cool part where we actually make the prepareadvertisement.txt file.
    */
   public void prepareAdvertisement(String filename, String usernames, String advertisement)
   {
     try
     {
+      // filewriter is what actually lets java create a new file on the computer
       FileWriter fw = new FileWriter(filename);
-      // Strin method split splits a string based on the provided token
-      // and returns an array of individual substrings
+      
+      // algorithm deep dive:
+      // we take our massive string of usernames and use .split(" ") to turn it into an array.
+      // the "for-each" loop lets us walk through that array easily.
       for (String un : usernames.split(" "))
       {
+          // we add the @ symbol to tag them and \n to make sure every ad is on a new line
           fw.write("@" + un + " " + advertisement +"\n");
       }
+      // closing the file is super important or it might not save properly
       fw.close();
     }
     catch (IOException e)
     {
-        System.out.println("Could not write to file. " + e);
+        System.out.println("couldn't write the file. rip: " + e);
     }
   }
 
   /**
-   * Print the array of posts
+   * just a helper method if we ever need to dump all posts to the console
    */
   public void printAllPosts()
   {
@@ -139,7 +130,7 @@ public class DataCollector
   }
 
   /**
-   * Print the array of target words
+   * same helper but for the keywords
    */
   public void printAllTargetWords()
   {
