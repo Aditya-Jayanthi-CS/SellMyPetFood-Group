@@ -1,3 +1,7 @@
+# VIDEO EXPLANATION
+
+https://drive.google.com/file/d/1lT1IjFyLgC78qrWSdez0kuhVQHMzZcJW/view?usp=sharing
+
 # CODE RESULTS
 <img width="2772" height="870" alt="image" src="https://github.com/user-attachments/assets/a1ed5b48-47d7-4c79-bfc4-e71da37c42ef" />
 
